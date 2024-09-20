@@ -20,8 +20,8 @@
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" th:classappend="${is_active == 'catalogo'} ? 'active' : ''" class="nav-link" aria-current="page">Catálogo</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Entretenimiento</a></li>
+            <li class="nav-item"><a href="/app/catalogo" class="nav-link active" aria-current="page">Catálogo</a></li>
+            <li class="nav-item"><a href="/app/entretenimiento" class="nav-link">Entretenimiento</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Carrito</a></li>
         </ul>
     </header>
@@ -59,6 +59,8 @@
             </div>
         </div>
     </form>
+    <!--Hay un detalle con los botones, solo aparecen 2 por cada cart, ya que para quitar lgo de carrito tiene que estar en el carrito
+        por ello, condicioné los botones para quitar y añadir al carrito con un tributo que me indica si está o no en el carrito-->
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -70,6 +72,7 @@
                             <p class="card-text" th:text="${flor.getFloresIdflores().getDescription()}"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
+                                    <!--Botones de las cards-->
                                     <a th:if="${flor.getFloresIdflores().getEnCarrito() == false}" type="button" class="btn btn-sm btn-outline-secondary">Agregar al carrito</a>
                                     <a th:if="${flor.getFloresIdflores().getEnCarrito() == true}" type="button" class="btn btn-sm btn-outline-secondary">Quitar del carrito</a>
                                     <a type="button" class="btn btn-sm btn-outline-secondary">Comprar directamente</a>
